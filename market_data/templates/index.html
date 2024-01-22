@@ -1,0 +1,65 @@
+<!-- market_data/templates/market_data/market_data_list.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Data List</title>
+    <style>
+        body {
+            background-color: #3559E0;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: white;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #29487D; /* A color similar to navy blue */
+        }
+
+        th {
+            background-color: #1F3464; /* A color similar to navy blue */
+        }
+
+        tr:nth-child(even) {
+            background-color: #2E4E8E; /* A slightly lighter color for even rows */
+        }
+    </style>
+</head>
+<body>
+    <h1>Market Data List</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Timestamp</th>
+                <th>Symbol</th>
+                <th>Price</th>
+                <th>Exchange</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in market_data_list %}
+                <tr>
+                    <td>{{ data.timestamp|date:"Y-m-d H:i:s" }}</td>
+                    <td>{{ data.symbol }}</td>
+                    <td>{{ data.price }}</td>
+                    <td>{{ data.exchange }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
